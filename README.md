@@ -11,6 +11,7 @@ This Ruby script checks Amazon Web Services (AWS) regions and Rackspace for serv
 
 * audit_servers_without_halo_installed.rb
 * README.md
+* Gemfile
 
 ##Requirements and Dependencies
 
@@ -21,7 +22,7 @@ This Ruby script checks Amazon Web Services (AWS) regions and Rackspace for serv
 
 ###*Installation*
 
-First, install the required ruby gems.
+First, install the required ruby gems using bundler.
 ```
     bundle install
 ```
