@@ -21,7 +21,12 @@ This Ruby script checks Amazon Web Services (AWS) regions and Rackspace for serv
 
 ###*Installation*
 
-Update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Lines 118-135 are were the updates should be applied.
+First, install the required ruby gems.
+```
+    bundle install
+```
+
+Then update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Lines 118-135 are were the updates should be applied.
 
 ```
     118 # Define providers, credential_paths and regions (if applicable) your servers
