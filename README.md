@@ -30,20 +30,20 @@ First, install the required ruby gems using bundler.
 Then update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Lines 118-135 are were the updates should be applied.
 
 ```
-    118 # Define providers, credential_paths and regions (if applicable) your servers
-    119 # reside. add/update this based on your environment
-    120 # example format for the file defined as credential_path:
+    118 # Define providers, credential_paths and regions (if applicable) where your servers
+    119 # reside. add/update this based on your environment. An example aws.yml
+    120 # file should be formatted like the following:
     121 # :default:
     122 #     :aws_access_key_id:     ABC123ABC123ABC123AB
     123 #     :aws_secret_access_key: ABC123ABC123ABC123ABC123ABC123ABC123ABC1
-    124 # or
+    124 # or a rackspace.yml example:
     125 # :default:
     126 #     :rackspace_username:  user_name
     127 #     :rackspace_api_key:   ABC123ABC123ABC123ABC123ABC123ABC123ABC1
-    128 providers = { "AWS" => ["/path/to/fog_aws", ['us-west-1', 'us-east-1']],
-    129               "Rackspace" => ["/path/to/fog_rackspace", ['N/A']]}
+    128 providers = { "AWS" => ["/path/to/aws.yml", ['us-west-1', 'us-east-1']],
+    129               "Rackspace" => ["/path/to/rackspace.yml", ['N/A']]}
     130 
-    131 # Pass in portal, key_id, key_secret to setup API session
+    131 # Pass in portal, key_id, key_secret to setup a Halo API session
     132 # key_id/key_secret can be created from portal.cloudpassage.com
     133 # Settings > Site Administration > API Keys
     134 # At least a read-only key is required
