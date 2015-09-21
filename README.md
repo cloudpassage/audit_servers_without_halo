@@ -89,4 +89,5 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
 <!--
 #CPTAGS:community-supported audit
+#TBICON:images/ruby_icon.png
 -->
