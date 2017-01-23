@@ -9,10 +9,10 @@ class AuditHalo
     def halo_instance_ids(servers)
       instance_ids = []
       servers['servers'].each do |e|
-        next unless e.key? 'aws_ec2'
-        instance_ids << e['aws_ec2']['ec2_instance_id']
+        next if e['server_label'].nil?
+        instance_ids << e['server_label'].match(/(?<=_)(.*)/).to_s
       end
-      instance_ids
+      instance_ids.reject(&:blank?)
     end
 
     def ec2_servers
@@ -34,7 +34,6 @@ class AuditHalo
 
       ips = halo_ips(halo_servers)
       instance_ids = halo_instance_ids(halo_servers)
-
       ec2_servers['reservations'].each do |reservation|
         reservation['instances'].each do |instance|
           puts "#{msg} #{instance.instance_id}" unless ip_exists?(instance, ips) or instance_id_exists?(instance, instance_ids)
