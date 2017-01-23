@@ -9,9 +9,10 @@ class AuditHalo
     def halo_instance_ids(servers)
       instance_ids = []
       servers['servers'].each do |e|
-        next if e['server_label'].nil?
-        instance_ids << e['server_label'].match(/(?<=_)(.*)/).to_s
+        instance_ids << e['aws_ec2']['ec2_instance_id'] if e.key? 'aws_ec2'
+        instance_ids << e['server_label'].match(/(?<=_)(.*)/).to_s unless e['server_label'].nil?
       end
+
       instance_ids.reject(&:blank?)
     end
 
