@@ -2,9 +2,17 @@ require_relative 'lib/helper'
 
 class AuditHalo
   class << self
-    def halo_ips
-      halo_servers = ServersController.new.index('state=active')
-      halo_servers['servers'].map { |e| [e['connecting_ip_address'], e['primary_ip_address']] }.flatten
+    def halo_ips(servers)
+      servers['servers'].map { |e| e['connecting_ip_address'] }
+    end
+
+    def halo_instance_ids(servers)
+      instance_ids = []
+      servers['servers'].each do |e|
+        next unless e.key? 'aws_ec2'
+        instance_ids << e['aws_ec2']['ec2_instance_id']
+      end
+      instance_ids
     end
 
     def ec2_servers
@@ -12,17 +20,24 @@ class AuditHalo
       EC2.client.describe_instances(filters: options)
     end
 
-    def ip_exists?(srv, ips)
-      ips.include? srv.public_ip_address or ips.include? srv.private_ip_address
+    def ip_exists?(srv, halo_ips)
+      halo_ips.include? srv.public_ip_address
+    end
+
+    def instance_id_exists?(srv, instance_ids)
+      instance_ids.include? srv.instance_id
     end
 
     def ec2_without_halo
       msg = 'Halo is not installed on'
-      ips = halo_ips
+      halo_servers = ServersController.new.index('state=active')
+
+      ips = halo_ips(halo_servers)
+      instance_ids = halo_instance_ids(halo_servers)
 
       ec2_servers['reservations'].each do |reservation|
         reservation['instances'].each do |instance|
-          puts "#{msg} #{instance.instance_id}" unless ip_exists?(instance, ips)
+          puts "#{msg} #{instance.instance_id}" unless ip_exists?(instance, ips) or instance_id_exists?(instance, instance_ids)
         end
       end
     end
