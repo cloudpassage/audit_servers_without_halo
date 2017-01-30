@@ -49,7 +49,8 @@ Install the CloudPassage API Gem
     gem install cloudpassage-0.3.0.gem
 ```
 
-Then update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Place the values inside of configs/portal.yml
+Then update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Place the values inside of configs/portal.yml. 
+AWS region codes can be referenced here: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 
 ```
     key_id:
