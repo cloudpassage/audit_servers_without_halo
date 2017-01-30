@@ -1,5 +1,4 @@
 require_relative 'lib/helper'
-require 'pp'
 
 class AuditHalo
   class << self
