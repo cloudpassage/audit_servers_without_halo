@@ -1,4 +1,5 @@
 require_relative 'lib/helper'
+require 'pp'
 
 class AuditHalo
   class << self
@@ -29,6 +30,11 @@ class AuditHalo
       instance_ids.include? srv.instance_id
     end
 
+    def in_whitelist?(platform)
+      whitelist = %w(centos fedora redhat amazon oracle debian windows)
+      whitelist.detect { |e| e.eql? platform }
+    end
+
     def ec2_without_halo
       msg = 'Halo is not installed on'
       halo_servers = ServersController.new.index('state=active')
@@ -37,7 +43,13 @@ class AuditHalo
       instance_ids = halo_instance_ids(halo_servers)
       ec2_servers['reservations'].each do |reservation|
         reservation['instances'].each do |instance|
-          puts "#{msg} #{instance.instance_id}" unless ip_exists?(instance, ips) or instance_id_exists?(instance, instance_ids)
+          unless ip_exists?(instance, ips) or instance_id_exists?(instance, instance_ids)
+            if in_whitelist?(instance.platform)
+              puts "#{msg} #{instance.instance_id} OS: #{instance.platform} supported by CloudPassage Agent"
+            else
+              puts "#{msg} #{instance.instance_id} OS: #{instance.platform} not supported by CloudPassage Agent"
+            end
+          end
         end
       end
     end
