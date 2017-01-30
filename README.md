@@ -16,7 +16,7 @@ This Ruby script checks Amazon Web Services (AWS) regions for servers that do no
 ###*Installation*
 
 
-Installing Ruby For Linux OSes
+### Prerequisites for installing Ruby For Linux OSes
 
 RPM Based
 ```
@@ -25,10 +25,10 @@ yum groupinstall 'Development Tools'
 
 Upgrade Ruby on Ubuntu/Debian
 ```
+apt-get install build-essential
 sudo apt-add-repository ppa:brightbox/ruby-ng
 sudo apt-get update
 sudo apt-get install ruby2.2 ruby2.2-dev
-apt-get install build-essential
 ```
 
 Install the gem bundler
@@ -39,6 +39,11 @@ Install the required ruby gems using bundler.
 ```
     bundle install
 ```
+If bundle install didn't install aws-sdk gem correctly, install the gem manually by
+```
+    gem install aws-sdk
+```
+
 Install the CloudPassage API Gem
 ```
     gem install cloudpassage-0.3.0.gem
