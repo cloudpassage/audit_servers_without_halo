@@ -9,22 +9,37 @@ This Ruby script checks Amazon Web Services (AWS) regions for servers that do no
 ##Requirements and Dependencies
 
 * The Ruby interpreter must be installed on the machine that executes the script.
+* Ruby intepreter version must be >= 2.2.2
 
 ##Usage
 
 ###*Installation*
 
-1. Install the gem bundler
+
+Installing Ruby For Linux OSes
+
+RPM Based
+```
+yum groupinstall 'Development Tools'
+```
+
+Upgrade Ruby on Ubuntu/Debian
+```
+sudo apt-add-repository ppa:brightbox/ruby-ng
+sudo apt-get update
+sudo apt-get install ruby2.2 ruby2.2-dev
+apt-get install build-essential
+```
+
+Install the gem bundler
 ```
     gem install bundler
 ```
-
-2. Install the required ruby gems using bundler.
+Install the required ruby gems using bundler.
 ```
     bundle install
 ```
-
-3. Install the CloudPassage API Gem
+Install the CloudPassage API Gem
 ```
     gem install cloudpassage-0.3.0.gem
 ```
