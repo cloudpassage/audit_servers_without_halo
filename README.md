@@ -49,11 +49,11 @@ Install the CloudPassage API Gem
     gem install cloudpassage-0.3.0.gem
 ```
 
-Then update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Place the values inside of configs/portal.yml. 
+Then update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Place the values inside of configs/portal.yml.
 AWS region codes can be referenced here: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 
 ```
-    key_id:
+    key_id: !!str
     secret_key:
     api_hostname : https://api.cloudpassage.com
     aws_key_id:
@@ -100,7 +100,7 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
- 
+
 <!--
 #CPTAGS:community-supported audit
 #TBICON:images/ruby_icon.png
