@@ -68,9 +68,7 @@ The expected output should look like the following:
 ```
     ruby main.rb
 
-    Halo is not installed on i-1480fea1         OS: CoreOS XYZ              not supported by CloudPassage agent
-    Halo is not installed on i-7b55125f         OS: Ubunto 14.2             supported by CloudPassage agent
-    Halo is not installed on i-2d7588ef         OS: Redhat Linux 6          supported by CloudPassage agent
+    Halo is not installed on i-1480fea1 ImageID: CentOS Linux 7 x86_64 HVM EBS 1602-b7ee8a69-ee97-4a49-9e68-afaee216db2e-ami-d7e1d2bd.3
 ```
 
 ##License
