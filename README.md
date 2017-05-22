@@ -26,7 +26,7 @@ This Ruby script checks Amazon Web Services (AWS) regions for servers that do no
 
 3. Install the CloudPassage API Gem
 ```
-    gem install cloudpassage-0.3.0.gem
+    gem install cloudpassage-0.4.0.gem
 ```
 
 Then update the "providers" Hash with your specific Cloud Provider, credential_path and regions where you have servers deployed. Place the values inside of configs/portal.yml
