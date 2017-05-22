@@ -30,7 +30,7 @@ class AuditHalo
 
     def ec2_without_halo
       msg = 'Halo is not installed on'
-      halo_servers = ServersController.new.index('state=active')
+      halo_servers = ServersController.new.index('state=active&per_page=100')
 
       ips = halo_ips(halo_servers)
       instance_ids = halo_instance_ids(halo_servers)
